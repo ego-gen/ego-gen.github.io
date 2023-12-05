@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="EgoGen is a generative and scalable synthetic data generation approach specifically tailored for egocentric perception tasks.">
+       <meta name="keywords" content="egocentric simulation; human motion synthesis; egocentric view; first-person view; human-scene interaction; deep learning; 3D vision; egocentric computer vision;">
+      <meta name="author" content="Gen Li">
+      <title>EgoGen: An Egocentric Synthetic Data Generator</title>
+
+      <meta property="og:title" content="EgoGen" />
+      <meta property="og:description" content="EgoGen is a generative and scalable synthetic data generation approach specifically tailored for egocentric perception tasks.">
+      <meta property="og:image" content="" />
+
+      <!--<meta name="twitter:card" content="summary_large_image" />-->
+      <meta name="twitter:title" content="EgoGen" />
+      <meta name="twitter:description" content="EgoGen is a generative and scalable synthetic data generation approach specifically tailored for egocentric perception tasks." />
+      <meta name="twitter:image" content="" />
+      <!--<meta name="twitter:image:alt" content="EgoBody" />-->
+
+      <!-- Bootstrap core CSS -->
+      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link href="css/scrolling-nav.css" rel="stylesheet">
+       <link href="css/hr.css" rel="stylesheet" >
+      <!-- nice figures  -->
+<!--      <link rel="stylesheet" href="css/font-awesome.css">-->
+<!--      <link rel="icon" type="image/jpg" href="images/egobody_logo1.jpg">-->
+       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
+
+   </head>
+   <body id="page-top">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+         <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">EgoGen</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="#method">Method</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="#video">Video</a>
+                  </li>
+                   <!--<li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="#downloads">Downloads</a>
+                  </li>-->
+                  <li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="#citation">Citation</a>
+                  </li>
+                  <!--<li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+                  </li>-->
+               </ul>
+            </div>
+         </div>
+      </nav>
+
+
+      <header class="bg-light text-black">
+          <div class="container text-center">
+              <h1><font color="#015FBD "><b>EgoGen </b></font></h1>
+              <h2><font color="#015FBD "><b>An Egocentric Synthetic Data Generator </b></font></h2><br><br>
+              <div id="content">
+          <div id="content-inner">
+
+            <div class="section head">
+
+                <div class="authors">
+                    <h5>
+                        <a href="https://vlg.inf.ethz.ch/team/Gen-Li.html">Gen Li</a><sup>1</sup>&nbsp;
+                        <a href="https://vlg.inf.ethz.ch/team/Kaifeng-Zhao.html">Kaifeng Zhao</a><sup>1</sup>&nbsp;
+                        <a href="https://vlg.inf.ethz.ch/team/Siwei-Zhang.html">Siwei Zhang</a><sup>1</sup>&nbsp;
+                        <a href="https://vlg.inf.ethz.ch/team/Xiaozhong-Lyu.html">Xiaozhong Lyu</a><sup>1</sup>&nbsp;
+                        <a href="https://dusmanu.com/">Mihai Dusmanu</a><sup>2</sup>&nbsp;
+                        <a href="https://yz-cnsdqz.github.io/">Yan Zhang</a><sup>1</sup>&nbsp;
+                        <a href="https://cvg.ethz.ch/team/Prof-Dr-Marc-Pollefeys">Marc Pollefeys</a><sup>1, 2</sup>&nbsp;
+                        <a href="https://vlg.inf.ethz.ch/team/Prof-Dr-Siyu-Tang.html">Siyu Tang</a><sup>1</sup>
+                        <h5>
+                </div>
+
+                <div class="affiliations">
+                    <h5>
+                        <sup>1</sup><a href="https://ethz.ch/en.html">ETH Zürich</a>&nbsp; &nbsp;&nbsp;
+                        <sup>2</sup><a href="https://www.microsoft.com/en-us/research/">Microsoft</a> &nbsp;&nbsp;
+                        
+                        <h5>
+                </div>
+
+                <br>
+                <!-- <div class="venue"><h5>International Conference on Computer Vision (<a href="https://iccv2023.thecvf.com/" target="_blank">ICCV</a>) 2023 <font color="#B20234 "><b>(Oral) </b></font><h5></div> -->
+
+
+
+
+
+                <div class="downloads">
+                    <br><h3>
+                    <a class="publink" href="" target="_blank" style="text-decoration: none"> Arxiv <i class="fa fa-print"></i></a> &nbsp;
+                    &nbsp;&nbsp;
+                    <a class="publink" href="" target="_blank" style="text-decoration: none"> Code (Coming soon) <i class="fa fa-github"></i></a>
+                    <h3>
+                </div>
+            </div>
+
+
+        </div>
+      </header>
+
+
+<!--      <hr class="hr-fade-content" data-content="&#129445">-->
+
+
+
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+                    <h5 class="img-wide text-center">
+                              <br> <br>
+                        <font color="#6F6D6D ">EgoGen: a scalable synthetic data generation system for egocentric perception tasks, with rich multi-modal data and accurate annotations. We simulate camera rigs for head-mounted devices (HMDs) and render from the perspective of the camera wearer with various sensors. Top to bottom: middle and right camera sensors in the rig. Left to right: photo-realistic RGB image, RGB with simulated motion blur, depth map, surface normal, segmentation mask, and world position for fisheye cameras widely used in HMDs. </font>
+                        <h5>
+               </div>
+            </div>
+         </div>
+
+
+<!--      <hr class="hr-fade-content" data-content="&#129445">-->
+
+
+      <section id="about" class="about-section">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+                   <div class="img-wide text-center">
+                     <!-- <p><img class="img-fluid" alt="teaser" src="https://via.placeholder.com/1500x600"></p> -->
+                     <p><img class="img-fluid" alt="teaser" src="images/teaser-final.png"></p>
+                  </div>
+                   <h2>Abstract</h2>
+                   <div class="text-center">
+                     <!-- <p><img class="img-fluid" alt="teaser" src="https://via.placeholder.com/1500x600"></p> -->
+<!--                     <p><img class="img-fluid" alt="teaser" src="images/teaser.png"></p>-->
+                       <p class="lead text-justify">
+<!--                           <b>Dataset Overview</b>. -->
+                           Understanding the world in first-person view is fundamental in Augmented Reality (AR). This immersive perspective brings dramatic visual changes and unique challenges compared to third-person views. Synthetic data has empowered third-person-view vision models, but its application to embodied egocentric perception tasks remains largely unexplored. A critical challenge lies in simulating natural human movements and behaviors that effectively steer the embodied cameras to capture a faithful egocentric representation of the 3D world. To address this challenge, we introduce <i>EgoGen</i>, a new synthetic data generator that can produce accurate and rich ground-truth training data for egocentric perception tasks. At the heart of <i>EgoGen</i> is a novel human motion synthesis model that directly leverages egocentric visual inputs of a virtual human to sense the 3D environment. Combined with collision-avoiding motion primitives and a two-stage reinforcement learning approach, our motion synthesis model offers a closed-loop solution where the embodied perception and movement of the virtual human are seamlessly coupled. Compared to previous works, our model eliminates the need for a pre-defined global path, and is directly applicable to dynamic environments. Combined with our easy-to-use and scalable data generation pipeline, we demonstrate  <i>EgoGen</i>’s efficacy in three tasks: mapping and localization for head-mounted cameras, egocentric camera tracking, and human mesh recovery from egocentric views. <i>EgoGen</i> will be fully open-sourced, offering a practical solution for creating realistic egocentric training data and aiming to serve as a useful tool for egocentric computer vision research. 
+                  </p>
+                  </div>
+
+
+
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+
+      <section id="method" class="">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+                   <h2>Policy Network Architecture</h2> <br>
+                  <div class="text-center">
+                     <!-- <p><img class="img-fluid" alt="teaser" src="https://via.placeholder.com/1500x600"></p> -->
+<!--                     <p><img class="img-fluid" alt="teaser" src="images/teaser.png"></p>-->
+                       <p class="lead text-justify">
+<!--                           <b>Dataset Overview</b>. -->
+                           As William Gibson stated: <q>We see in order to move; we move in order to see.</q> We close the loop for the interdependence between egocentric synthetic image data and human motion synthesis.
+                  </p>
+                  </div>
+                   <div class="text-center">
+                     <p><img class="img-fluid" alt="method overview" src="images/overview.jpg"></p>
+                  </div>
+<!--                   <p class="lead text-justify">-->
+<!--                       TODO-->
+<!--                   </p>-->
+               </div>
+            </div>
+         </div>
+
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+                   <h2>Overview of EgoGen</h2> <br>
+                  <div class="text-center">
+                     <!-- <p><img class="img-fluid" alt="teaser" src="https://via.placeholder.com/1500x600"></p> -->
+<!--                     <p><img class="img-fluid" alt="teaser" src="images/teaser.png"></p>-->
+                       <p class="lead text-justify">
+<!--                           <b>Dataset Overview</b>. -->
+                           Through generative motion synthesis, we further enhance egocentric data diversity by randomly sampling diverse body textures (ethnicity, gender) and 3D textured clothing through an automated clothing simulation pipeline. With high-quality scenes and different egocentric cameras, we can render photorealistic egocentric synthetic data with rich and accurate ground truth annotations.
+                  </p>
+                  </div>
+                   <div class="text-center">
+                     <p><img class="img-fluid" alt="pipeline overview" src="images/pipeline.jpg" width="500"></p>
+                  </div>
+<!--                   <p class="lead text-justify">-->
+<!--                       TODO-->
+<!--                   </p>-->
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+      <section id="video" class="">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+                  <h2 class="section-title-tc">Video</h2>
+                  <!--<div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/K6m0BmfMG-E" title="Probabilistic Human Mesh Recovery in 3D Scenes from Egocentric Views" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>-->
+                  <video width="960" controls>
+                    <source src="video/video.mp4" type="video/mp4">
+                    Your browser does not support HTML video.
+                  </video>
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+      <!--<section id="downloads" class="">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+                   <h2>Downloads</h2> <br>
+                  <h2 class="img-wide text-center">
+                      <a class="publink" href="" target="_blank" style="text-decoration: none"> Arxiv <i class="fa fa-print"></i></a> &nbsp;&nbsp;
+                      <a class="publink" href="" target="_blank" style="text-decoration: none"> Code <i class="fa fa-github"></i></a> &nbsp;&nbsp;
+                      </h2>
+               </div>
+            </div>
+         </div>
+      </section>-->
+
+
+
+      <section id="citation" class="">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+                  <h2 class="section-title-tc">Citation</h2>
+                  <br>
+                  <a class="publink" target="_blank" href=""><b>
+                    EgoGen: An Egocentric Synthetic Data Generator </b><br></a>
+                    Gen Li, Kaifeng Zhao, Siwei Zhang, Xiaozhong Lyu, Mihai Dusmanu, Yan Zhang, Marc Pollefeys, Siyu Tang<br>
+                  <br><br>
+<!--<pre style="display: block; background-color: #f5f5f5; border: 1px solid #ccc; border-radius: 4px">
+@inproceedings{zhang2023probabilistic,
+  title={Probabilistic Human Mesh Recovery in 3D Scenes from Egocentric Views},
+  author={Siwei Zhang, Qianli Ma, Yan Zhang, Sadegh Aliakbarian, Darren Cosker, Siyu Tang},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  year={2023}
+}</pre>-->
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+
+
+      <!--<section id="team" class="team-section">
+         <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="section-title-tc">Team</h2>
+                        <div class="text-center">
+                         <table>
+                               <tr>
+                                   <th> <img src="images/teams/siwei.jpg" width="150" height="150" border="0">  </th>
+                                   <th> <img src="images/teams/qianli.jpg" width="150" height="150" border="0">  </th>
+                                   <th> <img src="images/teams/yan.jpg" width="150" height="150" border="0"> </th>
+                                   <th> <img src="images/teams/sadegh.jpg" width="150" height="150" border="0">  </th>
+                                   <th> <img src="images/teams/darren.jpg" width="150" height="150" border="0"> </th>
+                                   <th> <img src="images/teams/siyu.jpg" width="150" height="150" border="0"> </th>
+                               </tr>
+
+                               <tr>
+                                   <td> <a href="https://vlg.inf.ethz.ch/team/Siwei-Zhang.html">Siwei Zhang</a> </td>
+                                   <td> <a href="https://qianlim.github.io/">Qianli Ma</a>  </td>
+                                   <td> <a href="https://yz-cnsdqz.github.io/">Yan Zhang</a> </td>
+                                   <td> <a href="https://sadegh-aa.github.io/">Sadegh Aliakbarian</a> </td>
+                                   <td> <a href="http://www.cs.bath.ac.uk/~dpc/">Darren Cosker</a> </td>
+                                   <td> <a href="https://vlg.inf.ethz.ch/team/Prof-Dr-Siyu-Tang.html">Siyu Tang</a> </td>
+                               </tr>
+                         </table>
+
+                        </div>
+                  </div>
+               </div>
+            </div>
+      </section>-->
+
+      <section id="contact" class="">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+	                <h2>Contact</h2>
+		            <br>For questions, please contact Gen Li:<br><a href="mailto:gen.li@inf.ethz.ch">gen.li@inf.ethz.ch</a>
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+
+
+
+      <!-- Footer -->
+      <footer class="py-5 bg-dark">
+         <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; VLG 2023</p>
+             <p style="text-align:right;font-size:small;" class="text-white">
+            template from <a href="https://neuralbodies.github.io/LEAP/index.html">LEAP</a>
+         </div>
+         <!-- /.container -->
+      </footer>
+      <!-- Bootstrap core JavaScript -->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Plugin JavaScript -->
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Custom JavaScript for this theme -->
+      <script src="js/scrolling-nav.js"></script>
+   </body>
+</html>

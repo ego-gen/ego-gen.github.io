@@ -27,6 +27,15 @@
 <!--      <link rel="stylesheet" href="css/font-awesome.css">-->
       <link rel="icon" type="image/png" href="images/logo.png">
 <!--       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>"> -->
+    <style>
+   #mainNav .navbar-nav .nav-item {
+      margin-right: 20px; /* Adjust the value as needed */
+   }
+</style>
+        
+        <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 
    </head>
    <body id="page-top">
@@ -43,7 +52,13 @@
                      <a class="nav-link js-scroll-trigger" href="#about">About</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#method">Method</a>
+                     <a class="nav-link js-scroll-trigger" href="#method">Human motion model</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="#rendering">Synthetic data generation</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link js-scroll-trigger" href="#applications">Applications</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link js-scroll-trigger" href="#video">Video</a>
@@ -99,8 +114,6 @@
 
 
 
-
-
                 <div class="downloads">
                     <br><h3>
                     <a class="publink" href="" target="_blank" style="text-decoration: none"> Arxiv <i class="fa fa-print"></i></a> &nbsp;
@@ -115,32 +128,16 @@
       </header>
 
 
-
-
-
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-10 mx-auto">
-                    <h5 class="img-wide text-center">
-                              <br> <br>
-                        <font color="#6F6D6D ">EgoGen: a scalable synthetic data generation system for egocentric perception tasks, with rich multi-modal data and accurate annotations. We simulate camera rigs for head-mounted devices (HMDs) and render from the perspective of the camera wearer with various sensors. Top to bottom: middle and right camera sensors in the rig. Left to right: photo-realistic RGB image, RGB with simulated motion blur, depth map, surface normal, segmentation mask, and world position for fisheye cameras widely used in HMDs. </font>
-                        <h5>
-               </div>
-            </div>
-         </div>
-
-
-<!--      <hr class="hr-fade-content" data-content="&#129445">-->
-
-
       <section id="about" class="about-section">
          <div class="container">
             <div class="row">
                <div class="col-lg-10 mx-auto">
-                   <div class="img-wide text-center">
                      <!-- <p><img class="img-fluid" alt="teaser" src="https://via.placeholder.com/1500x600"></p> -->
                      <p><img class="img-fluid" alt="teaser" src="images/teaser-final.png"></p>
-                  </div>
+                     <h5 class="img-wide text-center">
+                        <font color="#6F6D6D " size="4">EgoGen: a scalable synthetic data generation system for egocentric perception tasks, with rich multi-modal data and accurate annotations. We simulate camera rigs for head-mounted devices (HMDs) and render from the perspective of the camera wearer with various sensors. Top to bottom: middle and right camera sensors in the rig. Left to right: photo-realistic RGB image, RGB with simulated motion blur, depth map, surface normal, segmentation mask, and world position for fisheye cameras widely used in HMDs. </font>
+                        <h5>
+                  <br>
                    <h2>Abstract</h2>
                    <div class="text-center">
                      <!-- <p><img class="img-fluid" alt="teaser" src="https://via.placeholder.com/1500x600"></p> -->
@@ -164,25 +161,99 @@
          <div class="container">
             <div class="row">
                <div class="col-lg-10 mx-auto">
-                   <h2>Policy Network Architecture</h2> <br>
+                   <h2>Egocentric perception-driven motion synthesis</h2> <br>
+                  <h3>Training in static scenes</h3>
                   <div class="text-center">
                      <!-- <p><img class="img-fluid" alt="teaser" src="https://via.placeholder.com/1500x600"></p> -->
 <!--                     <p><img class="img-fluid" alt="teaser" src="images/teaser.png"></p>-->
                        <p class="lead text-justify">
-<!--                           <b>Dataset Overview</b>. -->
                            As William Gibson stated: <q>We see in order to move; we move in order to see.</q> We close the loop for the interdependence between egocentric synthetic image data and human motion synthesis.
-                  </p>
+                       </p>
+
+                       <p class="lead text-justify">
+                          Our autonomous virtual humans are able to <em>see</em> their environment with <em>egocentric</em> visual inputs, explore by themselves, without being constrained by predefined paths. 
+                       </p>
                   </div>
-                   <div class="text-center">
                      <p><img class="img-fluid" alt="method overview" src="images/overview.jpg"></p>
-                  </div>
-<!--                   <p class="lead text-justify">-->
-<!--                       TODO-->
-<!--                   </p>-->
+                    <h5 class="img-wide text-center">
+                        <font color="#6F6D6D " size="4">The policy network learns a generalizable mapping from motion seed body markers \( \mathbf{X}_t^S \), marker directions \( \mathbf{X}_t^{S^D} \), egocentric sensing \( \mathcal{E}_t \), and distance to the target \( d_t \) to CAMPs. The policy learns a stochastic collision avoiding action space to predict future body markers \( \mathbf{X}_t^F \). For illustration purposes, we visualize only one frame of \( \mathbf{X}_t^S \) and \( \mathcal{E}_t \).</font>
+                        <h5>
+                  <br>
+                  <h3>Generalization to dynamic settings</h3>
+                  <p class="lead text-justify">
+                        While the model is trained in static scenes, it demonstrates direct generalizability to dynamic settings, including dynamic obstacle avoidance and crowd motion synthesis.
+                       </p>
+                        <div style="display: flex; justify-content: space-between;">
+
+        <div>
+            <h6 style="text-align: center;">Moving Obstacle</h6>
+            <video width="160" height="270" controls>
+                <source src="video/moving.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div>
+            <h6 style="text-align: center;">Two People</h6>
+            <video width="160" height="270" controls>
+                <source src="video/2man.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div>
+            <h6 style="text-align: center;">More People</h6>
+            <video width="160" height="270" controls>
+                <source src="video/4man.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div>
+            <h6 style="text-align: center;">Even More People</h6>
+            <video width="292" height="270" controls>
+                <source src="video/8man.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+    </div>
+
+           <br> <br>
+            <p class="lead text-justify">
+                        Besides, our generative human motion model allows for generating diverse crowd motions for diverse body shapes, incorporating variations in height and weight.
+                       </p>
+
+                       <div style="display: flex; justify-content: space-between;">
+
+        <div>
+            <h6 style="text-align: center;">PhysicsVAE [Won et al. 2022]</h6>
+            <video width="300" height="300" controls>
+                <source src="video/physicsvae.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div>
+            <h6 style="text-align: center;">Ours</h6>
+            <video width="300" height="300" controls>
+                <source src="video/diverse.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div>
+            <h6 style="text-align: center;">Static body shapes in the left video</h6>
+            <img src="images/shape.png" width="300" height="300">
+        </div>
+
+    </div>
+
                </div>
             </div>
          </div>
 
+     <section id="rendering" class="">
          <div class="container">
             <div class="row">
                <div class="col-lg-10 mx-auto">
@@ -201,6 +272,23 @@
 <!--                   <p class="lead text-justify">-->
 <!--                       TODO-->
 <!--                   </p>-->
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+      <section id="applications" class="">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-10 mx-auto">
+                   <h2>Applications</h2> <br>
+                   <h3>Mapping and Localization for HMD</h3>
+                   <h3>Egocentric Camera Tracking</h3>
+                   <h3>Human Mesh Recovery from Egocentric Views</h3>
+                   <h5>HMR from Depth</h5>
+                   <h5>HMR from RGB</h5>
+                  </div>
                </div>
             </div>
          </div>

@@ -37,6 +37,14 @@
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
+        <style>
+    /* Custom CSS for showing submenus on hover */
+    .nav-item.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
+
+
    </head>
    <body id="page-top">
       <!-- Navigation -->
@@ -51,15 +59,34 @@
                   <li class="nav-item">
                      <a class="nav-link js-scroll-trigger" href="#about">About</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#method">Human motion model</a>
-                  </li>
+
+      <!-- Dropdown button with submenus -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#method" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Human motion model
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- Dropdown items with links to different sections -->
+          <a class="dropdown-item" href="#training">Training</a>
+          <a class="dropdown-item" href="#eval">Evaluation</a>
+        </div>
+      </li>
+
                   <li class="nav-item">
                      <a class="nav-link js-scroll-trigger" href="#rendering">Synthetic data generation</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#applications">Applications</a>
-                  </li>
+
+                    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#applications" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Applications
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- Dropdown items with links to different sections -->
+          <a class="dropdown-item" href="#lamar">Mapping & Localization for AR</a>
+          <a class="dropdown-item" href="#hmr">HMR from Egocentric views</a>
+        </div>
+      </li>
+
                   <li class="nav-item">
                      <a class="nav-link js-scroll-trigger" href="#video">Video</a>
                   </li>
@@ -158,7 +185,7 @@
 
 
       <section id="method" class="">
-         <div class="container">
+         <div class="container" id="training">
             <div class="row">
                <div class="col-lg-10 mx-auto">
                    <h2>Egocentric perception-driven motion synthesis</h2> <br>
@@ -175,9 +202,8 @@
                        </p>
                   </div>
                      <p><img class="img-fluid" alt="method overview" src="images/overview.jpg"></p>
-                    <h5 class="img-wide text-center">
+                    <h5 class="img-wide text-center" id="eval">
                         <font color="#6F6D6D " size="4">The policy network learns a generalizable mapping from motion seed body markers \( \mathbf{X}_t^S \), marker directions \( \mathbf{X}_t^{S^D} \), egocentric sensing \( \mathcal{E}_t \), and distance to the target \( d_t \) to CAMPs. The policy learns a stochastic collision avoiding action space to predict future body markers \( \mathbf{X}_t^F \). For illustration purposes, we visualize only one frame of \( \mathbf{X}_t^S \) and \( \mathcal{E}_t \).</font>
-                        <h5>
                   <br>
                   <h3>Generalization to dynamic settings</h3>
                   <p class="lead text-justify">
@@ -263,7 +289,7 @@
 <!--                     <p><img class="img-fluid" alt="teaser" src="images/teaser.png"></p>-->
                        <p class="lead text-justify">
 <!--                           <b>Dataset Overview</b>. -->
-                           Through generative motion synthesis, we further enhance egocentric data diversity by randomly sampling diverse body textures (ethnicity, gender) and 3D textured clothing through an automated clothing simulation pipeline. With high-quality scenes and different egocentric cameras, we can render photorealistic egocentric synthetic data with rich and accurate ground truth annotations.
+                           Through generative motion synthesis (<font color="green">green</font>), we further enhance egocentric data diversity by randomly sampling diverse body textures (ethnicity, gender) and 3D textured clothing through an automated clothing simulation pipeline (<font color="red">red</font>). With high-quality scenes and different egocentric cameras including multi-camera rigs (<font color="orange">orange</font>), we can render photorealistic egocentric synthetic data with rich and accurate ground truth annotations.
                   </p>
                   </div>
                    <div class="text-center">
@@ -279,15 +305,128 @@
 
 
       <section id="applications" class="">
-         <div class="container">
+         <div class="container" id="lamar">
             <div class="row">
                <div class="col-lg-10 mx-auto">
                    <h2>Applications</h2> <br>
-                   <h3>Mapping and Localization for HMD</h3>
-                   <h3>Egocentric Camera Tracking</h3>
+                   <h3>Mapping and Localization for HMDs</h3>
+                        
+                        <p class="lead text-justify">EgoGen has the capability to produce realistic synthetic egocentric data that closely matches real-world captures, with the real-world capture on the left and the EgoGen synthetic data on the right:</p>
+
+                        <div style="display: flex; justify-content: center; gap:50px;">
+
+        <div>
+            <h6 style="text-align: center;">LaMAR [Sarlin et al. 2022]</h6>
+            <img src="images/lamar.gif" alt="Real-world captures with HMDs" height="300">
+        </div>
+
+        <div>
+            <h6 style="text-align: center;">EgoGen synthetic data</h6>
+            <img src="images/egogen.gif" alt="EgoGen synthetic image data" height="300">
+        </div>
+
+    </div>
+                    <br> 
+                    <p class="lead text-justify">We visualize some synthetic images and their extracted feature points with SuperPoint:</p>
+
+                    <div style="display: flex; justify-content: center; gap:10px;">
+
+        <div>
+            <img src="images/lamar/1.png" alt="Real-world captures with HMDs" height="300">
+        </div>
+
+        <div>
+            <img src="images/lamar/2.png" alt="Real-world captures with HMDs" height="300">
+        </div>
+
+        <div>
+            <img src="images/lamar/3.png" alt="Real-world captures with HMDs" height="300">
+        </div>
+
+    </div>
+
+    <h5 class="img-wide text-center">
+                        <font color="#6F6D6D " size="4"><font color="red">Red</font> denotes detected 2D feature points and <font color="magenta">magenta</font> denotes triangulated 3D points.</font>
+                        <h5>
+
+<br>
+                    <p class="lead text-justify">And we show some render-to-real image pairs matched with SuperGlue:</p>
+
+                    <div style="display: flex; justify-content: center; gap:10px;">
+
+        <div>
+            <img src="images/lamar/match1.png" alt="Real-world captures with HMDs" height="300">
+        </div>
+
+        <div>
+            <img src="images/lamar/match2.png" alt="Real-world captures with HMDs" height="300">
+        </div>
+
+    </div>
+
+<br>
+                    <p class="lead text-justify" id="hmr">EgoGen can let virtual humans explore large-scale scenes, render dense egocentric views, and build a more complete SfM map, and it holds promise for creating AR mapping and localization datasets for digital twin scenes without manual data collection, providing enhanced privacy preservation.</p>
+                   <br>
                    <h3>Human Mesh Recovery from Egocentric Views</h3>
-                   <h5>HMR from Depth</h5>
-                   <h5>HMR from RGB</h5>
+                   <p class="lead text-justify">We simulate the data collection process of Egobody and let two virtual humans walk in the scanned scene meshes from Egobody. We randomly sample <em> gender</em>, <em> body shape </em>, and <em> initial body pose </em> and synthesize human motions with our proposed generative human motion model to increase data diversity. For RGB data generation, to further increase data diversity and close the sim-real gap, we randomly sample body texture and 3D textured clothing meshes from BEDLAM and perform automated clothing simulation. The model exhibits notable improvement with large-scale egocentric synthetic data.</p>
+                   <h4>HMR from Depth</h4>
+                   <h5>Synthetic data samples</h5>
+                    <div style="text-align: center;"><img src="images/depth_sample.png" alt="Real-world captures with HMDs" height="400"></div>
+
+                    <h5 class="img-wide text-center">
+                        <font color="#6F6D6D " size="4">Row 1: Synthetic depth images for HMR. Row 2: Images with simulated sensor noise.</font>
+                        <h5>
+
+                   <h5>Qualitative results</h5> 
+
+                    <div style="display: flex; justify-content: space-between;">
+
+        <div>
+            <video height="250" controls>
+                <source src="video/hmr1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div>
+            <video height="250" controls>
+                <source src="video/hmr2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+    </div>
+
+                   <br>
+                   <h4>HMR from RGB</h4>
+                   <h5>Synthetic data samples</h5>
+
+                    <div style="text-align: center;"><img src="images/rgb_sample.png" alt="Real-world captures with HMDs" height="400"></div>
+
+                    <h5 class="img-wide text-center">
+                        <font color="#6F6D6D " size="4">Row 1: Synthetic RGB images for HMR. Row 2: Images with simulated motion blur.</font>
+                        <h5>
+
+                   <h5>Qualitative results</h5>
+
+                    <div style="display: flex; justify-content: space-between;">
+
+        <div>
+            <video height="250" controls>
+                <source src="video/hmr3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>     
+                   
+        <div>      
+            <video height="250" controls>
+                <source src="video/hmr4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+    </div>
+
                   </div>
                </div>
             </div>

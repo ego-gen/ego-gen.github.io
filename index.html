@@ -215,7 +215,7 @@
 
         <div>
             <h6 style="text-align: center;">Moving Obstacle</h6>
-            <video width="160" height="270" controls autoplay loop muted playsinline>
+            <video style="width: 90%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/moving.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -223,7 +223,7 @@
 
         <div>
             <h6 style="text-align: center;">Two People</h6>
-            <video width="160" height="270" controls autoplay loop muted playsinline>
+            <video style="width: 90%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/2man.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -231,7 +231,7 @@
 
         <div>
             <h6 style="text-align: center;">More People</h6>
-            <video width="160" height="270" controls autoplay loop muted playsinline>
+            <video style="width: 90%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/4man.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -239,7 +239,7 @@
 
         <div>
             <h6 style="text-align: center;">Even More People</h6>
-            <video width="292" height="270" controls autoplay loop muted playsinline>
+            <video style="width: 90%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/8man.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -254,25 +254,25 @@
 
                        <div style="display: flex; justify-content: space-between;">
 
-        <div>
+        <div style="width: 30%;">
             <h6 style="text-align: center;">PhysicsVAE [Won et al. 2022]</h6>
-            <video width="300" height="300" controls autoplay loop muted playsinline>
+            <video style="width: 100%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/physicsvae.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div>
+        <div style="width: 30%;">
             <h6 style="text-align: center;">Ours</h6>
-            <video width="300" height="300" controls autoplay loop muted playsinline>
+            <video style="width: 100%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/diverse.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
-        <div>
+        <div style="width: 30%;">
             <h6 style="text-align: center;">Static body shapes in the left video</h6>
-            <img src="images/shape.png" width="300" height="300">
+            <img class="img-fluid" src="images/shape.png">
         </div>
 
     </div>
@@ -294,8 +294,8 @@
                            Through generative motion synthesis (<font color="green">green</font>), we further enhance egocentric data diversity by randomly sampling diverse body textures (ethnicity, gender) and 3D textured clothing through an automated clothing simulation pipeline (<font color="red">red</font>). With high-quality scenes and different egocentric cameras including multi-camera rigs (<font color="orange">orange</font>), we can render photorealistic egocentric synthetic data with rich and accurate ground truth annotations.
                   </p>
                   </div>
-                   <div class="text-center">
-                     <p><img class="img-fluid" alt="pipeline overview" src="images/pipeline.jpg" width="500"></p>
+                   <div class="text-center" style="width: 60%; margin: auto;">
+                     <p><img class="img-fluid" alt="pipeline overview" src="images/pipeline.jpg"></p>
                   </div>
 <!--                   <p class="lead text-justify">-->
 <!--                       TODO-->
@@ -333,15 +333,15 @@
                     <div style="display: flex; justify-content: center; gap:10px;">
 
         <div>
-            <img src="images/lamar/1.png" alt="Real-world captures with HMDs" height="300">
+            <img src="images/lamar/1.png" alt="Real-world captures with HMDs" class="img-fluid">
         </div>
 
         <div>
-            <img src="images/lamar/2.png" alt="Real-world captures with HMDs" height="300">
+            <img src="images/lamar/2.png" alt="Real-world captures with HMDs" class="img-fluid">
         </div>
 
         <div>
-            <img src="images/lamar/3.png" alt="Real-world captures with HMDs" height="300">
+            <img src="images/lamar/3.png" alt="Real-world captures with HMDs" class="img-fluid">
         </div>
 
     </div>
@@ -356,11 +356,11 @@
                     <div style="display: flex; justify-content: center; gap:10px;">
 
         <div>
-            <img src="images/lamar/match1.png" alt="Real-world captures with HMDs" height="300">
+            <img src="images/lamar/match1.png" alt="Real-world captures with HMDs" class="img-fluid">
         </div>
 
         <div>
-            <img src="images/lamar/match2.png" alt="Real-world captures with HMDs" height="300">
+            <img src="images/lamar/match2.png" alt="Real-world captures with HMDs" class="img-fluid">
         </div>
 
     </div>
@@ -372,7 +372,7 @@
                    <p class="lead text-justify">We simulate the data collection process of Egobody and let two virtual humans walk in the scanned scene meshes from Egobody. We randomly sample <em> gender</em>, <em> body shape </em>, and <em> initial body pose </em> and synthesize human motions with our proposed generative human motion model to increase data diversity. For RGB data generation, to further increase data diversity and close the sim-real gap, we randomly sample body texture and 3D textured clothing meshes from BEDLAM and perform automated clothing simulation. The model exhibits notable improvement with large-scale egocentric synthetic data.</p>
                    <h4>HMR from Depth</h4>
                    <h5>Synthetic data samples</h5>
-                    <div style="text-align: center;"><img src="images/depth_sample.png" alt="Real-world captures with HMDs" height="400"></div>
+                    <div style="text-align: center; width: 50%; margin: auto;"><img src="images/depth_sample.png" alt="Real-world captures with HMDs" class="img-fluid"></div>
 
                     <h5 class="img-wide text-center">
                         <font color="#6F6D6D " size="4">Row 1: Synthetic depth images for HMR. Row 2: Images with simulated sensor noise.</font>
@@ -383,14 +383,14 @@
                     <div style="display: flex; justify-content: space-between;">
 
         <div>
-            <video height="250" controls autoplay loop muted playsinline>
+            <video style="width: 100%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/hmr1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
         <div>
-            <video height="250" controls autoplay loop muted playsinline>
+            <video style="width: 100%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/hmr2.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -402,7 +402,7 @@
                    <h4>HMR from RGB</h4>
                    <h5>Synthetic data samples</h5>
 
-                    <div style="text-align: center;"><img src="images/rgb_sample.png" alt="Real-world captures with HMDs" height="400"></div>
+                    <div style="text-align: center; width: 60%; margin: auto;"><img src="images/rgb_sample.png" alt="Real-world captures with HMDs" class="img-fluid"></div>
 
                     <h5 class="img-wide text-center">
                         <font color="#6F6D6D " size="4">Row 1: Synthetic RGB images for HMR. Row 2: Images with simulated motion blur.</font>
@@ -413,14 +413,14 @@
                     <div style="display: flex; justify-content: space-between;">
 
         <div>
-            <video height="250" controls autoplay loop muted playsinline>
+            <video style="width: 100%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/hmr3.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>     
                    
         <div>      
-            <video height="250" controls autoplay loop muted playsinline>
+            <video style="width: 100%; height: auto; display: block; margin: auto;" controls autoplay loop muted playsinline>
                 <source src="video/hmr4.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
